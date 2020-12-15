@@ -1,0 +1,130 @@
+import Head from 'next/head'
+import styles from './layout.module.scss'
+import utilStyles from '../styles/utils.module.css'
+import Link from 'next/link'
+import fire from '../config/firebase-config';
+import { useState } from 'react';
+
+const name = 'Mr Translate'
+export const siteTitle = 'TranslateTools'
+
+
+
+export default function Layout({ children, home }) {
+
+    const [notification, setNotification] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    const user = fire.auth().currentUser;
+    // if (!user) {
+    //     return(
+    //         <div>Loading..</div>
+    //     )
+    // }
+    // console.log(user.email)
+
+    fire.auth()
+        .onAuthStateChanged((user) => {
+            if (user) {
+                setLoggedIn(true)
+            } else {
+                setLoggedIn(false)
+            }
+        })
+
+    const handleLogout = () => {
+        fire.auth()
+          .signOut()
+          .then(() => {
+            setNotification('Logged out')
+            setTimeout(() => {
+              setNotification('')
+            }, 2000)
+          });
+      }
+
+    return (
+        <>  
+            <div className={`${styles.navLayout}`}>
+                <img
+                src="/images/logo.svg"
+                className={`${styles.navLogo} ${utilStyles.borderCircle}`}
+                alt={name}
+                />
+                
+                <nav>
+                    <ul className={`${styles.menuLayout}`}>
+                        <li><a href="#Accueil">Accueil</a></li>
+                        <li><a href="#Apropos">À propos</a></li>
+                        <li><a href="#Contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                {!user 
+                    ?
+                    <div>
+                        <Link href="/users/register">
+                        <a>Register</a>
+                        </Link> | 
+                        <Link href="/users/login">
+                        <a> Login</a>
+                        </Link>
+                    </div>
+                    :
+                    <button onClick={handleLogout}>Logout</button>
+                    }
+            </div>
+            <div className={styles.container}>
+                <Head>
+                    <link rel="icon" href="/favicon.ico" />
+                    <meta
+                    name="description"
+                    content="Learn how to build a personal website using Next.js"
+                    />
+                    <meta
+                    property="og:image"
+                    content={`https://og-image.now.sh/${encodeURI(
+                        siteTitle
+                    )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+                    />
+                    <meta name="og:title" content={siteTitle} />
+                    <meta name="twitter:card" content="summary_large_image" />
+                </Head>
+                <header className={styles.header}>
+                    {home ? (
+                    <>
+                        
+                    </>
+                    ) : (
+                    <>
+                        <Link href="/">
+                        <a>
+                            <img
+                            src="/images/profile.jpg"
+                            className={`${styles.headerImage} ${utilStyles.borderCircle}`}
+                            alt={name}
+                            />
+                        </a>
+                        </Link>
+                        <h2 className={utilStyles.headingLg}>
+                        <Link href="/">
+                            <a className={utilStyles.colorInherit}>{name}</a>
+                        </Link>
+                        </h2>
+                    </>
+                    )}
+                </header>
+
+                <main>{children}</main>
+
+                {!home && (
+                    <div className={styles.backToHome}>
+                    <Link href="/">
+                        <a>← Back to home</a>
+                    </Link>
+                    </div>
+                )}
+            </div>
+        </>
+    )
+}
