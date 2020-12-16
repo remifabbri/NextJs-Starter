@@ -25,14 +25,34 @@
   }
 
   .navLayout {
+    position: fixed;
+    top: 0;
+    left:0;
     display: flex; 
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    padding: 0 25px;
+    padding: 0 25px 0px 0px;
     height: 50px;
     width: 100%;
-    background-color: #f2e7bf;
+    // background-color: #f2e7bf;
+
+    .navLeft{
+      display: flex; 
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      background-color: red;
+      height: 50px;
+      width: 66%;
+      padding: 0px 25px;
+      border-top-right-radius:50px;
+      border-bottom-right-radius:50px;
+      background: rgb(109,62,161);
+      background: linear-gradient(125deg, rgba(109,62,161,0.5032387955182073) 10%, rgba(56,70,207,0.43601190476190477) 50%, rgba(52,170,213,0.5) 90%);
+
+    }
+
   }
   .navLogo{
     height: 50px;
@@ -45,8 +65,14 @@
 
     li{
       list-style-type: none; 
-      margin: 0 10px; 
+      margin: 0 10px;
+      font-weight: 400;
+      
+      a{
+        color: white;
+      }
     }
-
   }
+
+  
   

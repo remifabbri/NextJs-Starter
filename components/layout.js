@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from './layout.module.scss'
-import utilStyles from '../styles/utils.module.css'
+import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
 import fire from '../config/firebase-config';
 import { useState } from 'react';
@@ -46,32 +46,35 @@ export default function Layout({ children, home }) {
     return (
         <>  
             <div className={`${styles.navLayout}`}>
-                <img
-                src="/images/logo.svg"
-                className={`${styles.navLogo} ${utilStyles.borderCircle}`}
-                alt={name}
-                />
-                
-                <nav>
-                    <ul className={`${styles.menuLayout}`}>
-                        <li><a href="#Accueil">Accueil</a></li>
-                        <li><a href="#Apropos">À propos</a></li>
-                        <li><a href="#Contact">Contact</a></li>
-                    </ul>
-                </nav>
+                <div className={`${styles.navLeft}`}>
+                    <img
+                    src="/images/logo.svg"
+                    className={`${styles.navLogo} ${utilStyles.borderCircle}`}
+                    alt={name}
+                    />
+                    
+                    <nav>
+                        <ul className={`${styles.menuLayout}`}>
+                            <li><a href="#Accueil">Accueil</a></li>
+                            <li><a href="#Apropos">À propos</a></li>
+                            <li><a href="#Contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
 
                 {!user 
                     ?
-                    <div>
+                    <div className={`${utilStyles.btnGroup}`} role="group" aria-label="Call to action">            
                         <Link href="/users/register">
-                        <a>Register</a>
-                        </Link> | 
+                            <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">SignUp</a>
+                        </Link>  
+                        {/* <span className={`${utilStyles.btnCircle} ${utilStyles.btnOr}`}>or</span> */}
                         <Link href="/users/login">
-                        <a> Login</a>
+                            <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">SignIn</a>
                         </Link>
                     </div>
                     :
-                    <button onClick={handleLogout}>Logout</button>
+                    <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
                     }
             </div>
             <div className={styles.container}>
