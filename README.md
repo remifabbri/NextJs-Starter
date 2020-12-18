@@ -34,7 +34,6 @@ Backend management with firebase DB + Auth
     const now = firebase.firestore.Timestamp.now();
     export { fire, auth, db, now };
 
-    export default fire;
     ``` 
     + add this line to your file .gitignore for protect your secret data
     ```
