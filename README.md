@@ -16,7 +16,7 @@ Backend management with firebase DB + Auth
     import firebase from 'firebase';
 
     const firebaseConfig = {
-        // place here your data find in file firebaseServiceAccountKey.json
+        [color=#26B260]// place here your data find in file firebaseServiceAccountKey.json[/color]
     };
 
     try {
@@ -40,6 +40,7 @@ Backend management with firebase DB + Auth
     # config firebase
     /config
     ```
+
 3. In tab Authentification > sign-in method : activated provider ***Email/Password*** and ***Google***
 4. In tab CloudFirestore for activated database
 
