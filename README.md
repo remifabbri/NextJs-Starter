@@ -16,9 +16,8 @@ Backend management with firebase DB + Auth
     import firebase from 'firebase';
 
     const firebaseConfig = {
-        ```diff
-        + // place here your data find in file firebaseServiceAccountKey.json
-        ```
+        // place here your data find in file firebaseServiceAccountKey.json
+      
     };
 
     try {
