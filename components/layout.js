@@ -4,6 +4,7 @@ import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
 import fire from '../config/firebase-config';
 import { useState } from 'react';
+import { useAuth } from '../hooks/useAuth'
 
 const name = 'Mr Translate'
 export const siteTitle = 'TranslateTools'
@@ -11,37 +12,10 @@ export const siteTitle = 'TranslateTools'
 
 
 export default function Layout({ children, home }) {
+    const auth = useAuth();
+    const user = auth.user; 
 
-    const [notification, setNotification] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
-
-    const user = fire.auth().currentUser;
-    // if (!user) {
-    //     return(
-    //         <div>Loading..</div>
-    //     )
-    // }
-    // console.log(user.email)
-
-    fire.auth()
-        .onAuthStateChanged((user) => {
-            if (user) {
-                setLoggedIn(true)
-            } else {
-                setLoggedIn(false)
-            }
-        })
-
-    const handleLogout = () => {
-        fire.auth()
-          .signOut()
-          .then(() => {
-            setNotification('Logged out')
-            setTimeout(() => {
-              setNotification('')
-            }, 2000)
-          });
-      }
+    // console.log('layout user', user);
 
     return (
         <>  
@@ -74,7 +48,10 @@ export default function Layout({ children, home }) {
                         </Link>
                     </div>
                     :
-                    <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
+                    <Link href="/users/profile">
+                            <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">{user.name}</a>
+                    </Link>
+                    // <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
                     }
             </div>
             <div className={styles.container}>

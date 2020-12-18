@@ -1,10 +1,13 @@
 import { useState } from 'react'; 
 import fire from '../../config/firebase-config';
 import { useRouter } from 'next/router';
+import { useAuth } from '../../hooks/useAuth'
 
 const Register = () => {
   const router = useRouter();
-  const [userName, setUsername] = useState('');
+  const auth = useAuth();
+  const [name, setname] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passConf, setPassConf] = useState('');
   const [notification, setNotification] = useState('');
@@ -21,22 +24,38 @@ const Register = () => {
       setPassword('');
       setPassConf('');
       return null;
-      }
-    fire.auth()
-      .createUserWithEmailAndPassword(userName, password)
-      .catch((err) => {
-        console.log(err.code, err.message)
-      });
-    router.push("/")
+    }
+
+    return auth.signUp({ name, email, password }).then(()=> {
+        setname('');
+        setEmail('');
+        setPassword('');
+        setPassConf('');
+        router.push("/")
+    })
+  }
+
+  const signUpWithGoogle = (e) => {
+    e.preventDefault(); 
+    return auth.signUpWithGoogle().then(() => {
+      router.push('/');
+    });
   }
 
   return (
     <div>
       <h1>Create new user</h1>
         {notification}
+
+      <h2>Sign up with social média</h2>
+      <button onClick={signUpWithGoogle}>Google</button>
+
       <form onSubmit={handleLogin}>
-        Email: <input type="text" value={userName} 
-        onChange={({target}) => setUsername(target.value)} /> 
+        Name: <input type="text" value={name} 
+        onChange={({target}) => setname(target.value)} /> 
+        <br />
+        Email<input type="text" value={email} 
+        onChange= {({target}) => setEmail(target.value)} />
         <br />
         Password: <input type="password" value={password} 
         onChange={({target}) => setPassword(target.value)} /> 
