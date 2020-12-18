@@ -21,11 +21,11 @@ Backend management with firebase DB + Auth
     };
 
     try {
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
     } catch(err){
-    if (!/already exists/.test(err.message)) {
-        console.error('Firebase initialization error', err.stack)}
+        if (!/already exists/.test(err.message)) {
+            console.error('Firebase initialization error', err.stack)}
     }
 
     const fire = firebase;
