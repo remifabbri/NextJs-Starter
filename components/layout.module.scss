@@ -2,29 +2,29 @@
     max-width: 36rem;
     padding: 0 1rem;
     margin: 3rem auto 6rem;
-  }
-  
-  .header {
+}
+
+.header {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
   
-  .headerImage {
+.headerImage {
     width: 6rem;
     height: 6rem;
-  }
+}
   
-  .headerHomeImage {
+.headerHomeImage {
     width: 8rem;
     height: 8rem;
-  }
-  
-  .backToHome {
-    margin: 3rem 0 0;
-  }
+}
 
-  .navLayout {
+.backToHome {
+    margin: 3rem 0 0;
+}
+
+.navLayout {
     position: fixed;
     top: 0;
     left:0;
@@ -38,41 +38,202 @@
     // background-color: #f2e7bf;
 
     .navLeft{
-      display: flex; 
-      flex-flow: row nowrap;
-      justify-content: space-between;
-      align-items: center;
-      background-color: red;
-      height: 50px;
-      width: 66%;
-      padding: 0px 25px;
-      border-top-right-radius:50px;
-      border-bottom-right-radius:50px;
-      background: rgb(109,62,161);
-      background: linear-gradient(125deg, rgba(109,62,161,0.5032387955182073) 10%, rgba(56,70,207,0.43601190476190477) 50%, rgba(52,170,213,0.5) 90%);
+        display: flex; 
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        background-color: red;
+        height: 50px;
+        width: calc(50% + 50px);
+        padding: 0px 25px;
+        border-top-right-radius:50px;
+        border-bottom-right-radius:50px;
+        background: rgb(109,62,161);
+        // background: linear-gradient(125deg, rgba(109,62,161,0.5032387955182073) 10%, rgba(56,70,207,0.43601190476190477) 50%, rgba(52,170,213,0.5) 90%);
+        background: linear-gradient(125deg, rgba(109,62,161) 10%, rgba(56,70,207) 50%, rgba(52,170,213) 90%);
 
+        @media(max-width:640px){
+            background: transparent;
+            padding :0px;
+        }
+
+
+        .navLogo{
+            height: 50px;
+            order: 1;
+
+            @media(max-width: 640px){
+                order: 2; 
+            }
+        }
+
+        .blockActionToggle{
+            position: relative;
+            display: flex; 
+            justify-content: left;
+            align-items: center;
+            height: 50px; 
+            width: 60%;
+            order: 1; 
+            
+             
+            @media(max-width: 640px){
+                
+            }
+
+            .blockImgActionToggle{
+                position: absolute; 
+                top:0; 
+                left:0;
+                display: flex; 
+                justify-content: flex-end;
+                height: 50px; 
+                width: 60px; 
+                border-top-right-radius:50px;
+                border-bottom-right-radius:50px;
+                background: rgb(109,62,161);
+                // background: linear-gradient(125deg, rgba(109,62,161,0.5032387955182073) 10%, rgba(56,70,207,0.43601190476190477) 50%, rgba(52,170,213,0.5) 90%);
+                background: linear-gradient(125deg, rgba(109,62,161) 10%, rgba(56,70,207) 50%, rgba(52,170,213) 90%);
+                z-index: 1;
+                padding-right:10px;
+                transition: width 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            }
+
+            .actionToggle{ 
+                position : absolute;
+                height: 50px; 
+                width: 100%;
+                margin:0; 
+                z-index: 2;
+                opacity: 0; 
+            }
+
+            .imageActionToggle{
+                // position: absolute; 
+                height: 50px; 
+                width: 50px; 
+                background: url(../public/images/menu-w.svg);
+                background-repeat: no-repeat;
+                background-size: 75%;
+                background-position: center;
+                z-index: 1;
+                transition: none;
+                transform: none; 
+            }
+        }
+        
+        .actionToggle:checked ~ .blockImgActionToggle{
+            width:100%;
+            transition: width 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0); 
+
+            .imageActionToggle{
+                height: 50px;
+                width: 50px;
+                background: url(../public/images/close-w.svg);
+                background-repeat: no-repeat;
+                background-size: 75%;
+                background-position: right;
+                transform: none; 
+                transition: none;
+               
+            }
+        }
+
+        .actionToggle:checked ~ .navMenu{
+            transform: none;
+        }
+
+        .navMenu{
+            height: calc(100% - 50px);
+            width: 33%;
+            border-top-right-radius:30px;
+            border-bottom-right-radius:30px;
+            background: rgb(109,62,161);
+            // background: linear-gradient(125deg, rgba(109,62,161,0.5032387955182073) 10%, rgba(56,70,207,0.43601190476190477) 50%, rgba(52,170,213,0.5) 90%);
+            background: linear-gradient(125deg, rgba(109,62,161) 10%, rgba(56,70,207) 50%, rgba(52,170,213) 90%);
+            
+            
+            @media(max-width:640px){
+                position: fixed; 
+                top: 50px; 
+                left: 0px;
+                transform-origin: 0% 0%;
+                transform: translate(-100%, 0); 
+                transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0); 
+            }
+        
+            .menuLayout{
+                display: flex; 
+                flex-flow: row nowrap; 
+                justify-content: center;
+        
+                @media(max-width:640px){
+                    flex-flow: column nowrap;
+                    justify-content: flex-start;
+                    align-items: center;
+                    height: 100%;
+                }
+        
+                li{
+                    list-style-type: none; 
+                    margin: 0 10px;
+                    font-weight: 400;
+                    margin: 20px 0px;
+        
+                    a{
+                        font-size: 26px;
+                        
+                        text-decoration: none;
+                        color: white;
+                    }
+                }
+            } 
+        }
     }
 
-  }
-  .navLogo{
-    height: 50px;
-  }
 
-  .menuLayout{
-    display: flex; 
-    flex-flow: row nowrap; 
-    justify-content: center;
-
-    li{
-      list-style-type: none; 
-      margin: 0 10px;
-      font-weight: 400;
-      
-      a{
-        color: white;
-      }
+    .navRight{
+        display: flex; 
+        flex-flow: row nowrap;
+        justify-content: right;
+        align-items: center;
+        
+        a{
+            margin: 0 10px;
+        }
     }
-  }
+}
 
-  
-  
+.navMobile{
+    display: none !important;
+    @media(max-width:640px) {
+        display:flex !important;
+    }
+}
+
+.navDesktop{
+    order: 2; 
+    display: flex;
+    @media(max-width:640px) {
+        display: none;
+    }
+    ul{
+        display:flex;
+        flex-flow: row nowrap; 
+        justify-content: center;
+
+        li{
+            list-style-type: none; 
+            margin: 0 10px;
+            font-weight: 400;
+            margin: 0 20px;
+
+            a{
+                font-size: 18px;
+                
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}

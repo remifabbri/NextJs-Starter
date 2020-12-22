@@ -26,7 +26,36 @@ const profile = () => {
 
   if(!user){
     return (
-      <div>Loading ...</div>
+      <div>
+        <h1>Profile</h1>
+        
+        <div className={`${utilStyles.btnGroup}`} role="group" aria-label="Call to action">            
+            <Link href="/users/register">
+                <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">SignUp</a>
+            </Link>  
+            {/* <span className={`${utilStyles.btnCircle} ${utilStyles.btnOr}`}>or</span> */}
+            <Link href="/users/login">
+                <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">SignIn</a>
+            </Link>
+        </div>
+
+        <h2>Option de gestion</h2>
+        <Link href="/users/resetpassword">
+          <a>Changé le mot de passe de son compte</a>
+        </Link>
+
+        <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
+        {/* {notify}
+        <form onSubmit={handleLogin}>
+          Email<input type="text" value={email} 
+          onChange= {({target}) => setEmail(target.value)} />
+          <br />
+          Password<input type="password" value={password} 
+          onChange={({target}) => setPassword(target.value)} />
+          <br />
+          <button type="submit">Login</button>
+        </form> */}
+      </div>
     )
   }
 

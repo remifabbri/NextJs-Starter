@@ -4,6 +4,10 @@
 // Gen linear-gradiant : https://cssgradient.io/
 // Gen Box-Shadow : https://html-css-js.com/css/generator/box-shadow/
 
+.heigthMax{
+  height: 100%;
+}
+
 .heading2Xl {
     font-size: 2.5rem;
     line-height: 1.2;
@@ -83,7 +87,8 @@
   // background: rgb(52,170,213);
   // background: linear-gradient(125deg, rgba(52,170,213,1) 9%, rgba(109,62,161,1) 88%);
   background: rgb(109,62,161);
-  background: linear-gradient(125deg, rgba(109,62,161,0.5032387955182073) 10%, rgba(56,70,207,0.43601190476190477) 50%, rgba(52,170,213,0.5) 90%);
+  // background: linear-gradient(125deg, rgba(109,62,161,0.5032387955182073) 10%, rgba(56,70,207,0.43601190476190477) 50%, rgba(52,170,213,0.5) 90%);
+  background: linear-gradient(125deg, rgba(109,62,161) 10%, rgba(56,70,207) 50%, rgba(52,170,213) 90%);
   -webkit-box-shadow: 0px 0px 10px -2px #000000; 
   box-shadow: 0px 0px 10px -2px #000000;
   
@@ -94,7 +99,172 @@
     -webkit-box-shadow: 0px 0px 10px 0px #000000; 
     box-shadow: 0px 0px 10px 0px #000000;
   }
+
+  img{
+    display: block;
+    height: 24px;
+    width: 24px;
+    // margin-right: 5px; 
+    filter: invert(100%); // black to white
+  }
   
 }
 
+.bgSignSection{
+  position: fixed; 
+  top:0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../public/images/bg_sign.jpg);
+  filter: grayscale(100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.signSection {
+  display: flex; 
+  flex-flow: row nowrap;
+  justify-content: center; 
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+  color: #323232; 
+
+  .signBlock{
+    display: flex; 
+    flex-flow: column nowrap;
+    justify-content: center; 
+    align-items: center;
+    height:max-content;
+    width: max-content;
+    padding: 25px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(10px);
+    -webkit-box-shadow: 0px 0px 20px 0px #000000; 
+    box-shadow: 0px 0px 20px 0px #000000; 
+
+    // h1{
+    //   margin: 0;
+    // }
+    
+    
+    .styleHr{
+      border: 0; 
+      height: 1px;
+      width: 100%; 
+      margin: 5px 0px;
+      background: rgb(2,0,36);
+      background: linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(28,27,44,0.49763655462184875) 15%, rgba(42,41,48,0.7973564425770308) 30%, rgba(50,50,50,1) 50%, rgba(50,50,50,0.8029586834733894) 70%, rgba(50,50,50,0.500437675070028) 85%, rgba(50,50,50,0) 100%);
+    }
+  }
+}
+
+.signGoogle{
+  height:46px;
+  width: 191px;
+  padding: 0; 
+  border: none; 
+  background: url(../public/images/btn_google_signin_dark_normal_web.png);
+  background-repeat: no-repeat;
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+
+$primary: #1E90FF;
+$secondary: #1E90FF;
+$white: #000000;
+$gray: #323232;
+
+.formDefault{
+  display: flex; 
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width:75%; 
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $gray;
+  outline: 0;
+  font-size: 1rem;
+  color: $white;
+  padding: 7px 0;
+  background: transparent !important;
+  transition: border-color 0.2s;
+
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: $gray;
+}
+
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $primary;
+    font-weight:700;    
+  }
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image-slice: 1;
+}
+/* reset input */
+.form__field{
+  &:required,&:invalid { box-shadow:none; }
+}
+
+
+
+.ActionButton{
+  height: 45px; 
+  width: 150px;
+  border:2px solid $primary; 
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0px; 
+  background-color: $primary;
+  color: white;
+
+  &:hover{
+    -webkit-box-shadow: inset 0px 0px 15px -5px #000000; 
+    box-shadow: inset 0px 0px 15px -5px #000000;
+  }
+}
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import fire from '../../config/firebase-config';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../hooks/useAuth'
+import utilStyles from '../../styles/utils.module.scss'
 
 const Register = () => {
   const router = useRouter();
@@ -43,30 +44,45 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <h1>Create new user</h1>
+    <div className={utilStyles.signSection}>
+      <div className={utilStyles.bgSignSection}></div>
+      <div className={utilStyles.signBlock}>
+        <h1>Create your account</h1>
         {notification}
-
-      <h2>Sign up with social média</h2>
-      <button onClick={signUpWithGoogle}>Google</button>
-
-      <form onSubmit={handleLogin}>
-        Name: <input type="text" value={name} 
-        onChange={({target}) => setname(target.value)} /> 
-        <br />
-        Email<input type="text" value={email} 
-        onChange= {({target}) => setEmail(target.value)} />
-        <br />
-        Password: <input type="password" value={password} 
-        onChange={({target}) => setPassword(target.value)} /> 
-        <br />
-        Password conf: <input type="password" value={passConf}    
-        onChange={({target}) => setPassConf(target.value)} /> 
-        <br />
-        <button type="submit">Login</button>
-      </form>
+        <div className={utilStyles.styleHr}></div>
+        <h3>Sign up with social média</h3>
+        <button className={utilStyles.signGoogle} onClick={signUpWithGoogle}></button>
+        <div className={utilStyles.styleHr}></div>
+        <h3>create a traditional account</h3>
+        <form onSubmit={handleLogin} className={utilStyles.formDefault} >
+          <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
+            <input type="input" className={utilStyles.form__field} placeholder="Name" value={name} 
+              onChange={({target}) => setname(target.value)} required />
+            <label for="name" className={utilStyles.form__label}>Name</label>
+          </div>
+          <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
+            <input type="input" className={utilStyles.form__field} placeholder="Email" value={email} 
+              onChange= {({target}) => setEmail(target.value)} required />
+            <label for="name" className={utilStyles.form__label}>Email</label>
+          </div>
+          <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
+            <input type="input" className={utilStyles.form__field} placeholder="Password" value={password} 
+              onChange= {({target}) => setPassword(target.value)} required />
+            <label for="name" className={utilStyles.form__label}>Password</label>
+          </div>
+          <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
+            <input type="input" className={utilStyles.form__field} placeholder="Password conf" value={passConf} 
+              onChange= {({target}) => setPassConf(target.value)} required />
+            <label for="name" className={utilStyles.form__label}>Password conf</label>
+          </div>
+          <button type="submit" className={utilStyles.ActionButton}>
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
 
 export default Register
+

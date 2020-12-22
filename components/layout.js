@@ -18,7 +18,7 @@ export default function Layout({ children, home }) {
     // console.log('layout user', user);
 
     return (
-        <>  
+        <div className={styles.heigthMax}>  
             <div className={`${styles.navLayout}`}>
                 <div className={`${styles.navLeft}`}>
                     <img
@@ -26,33 +26,45 @@ export default function Layout({ children, home }) {
                     className={`${styles.navLogo} ${utilStyles.borderCircle}`}
                     alt={name}
                     />
-                    
-                    <nav>
-                        <ul className={`${styles.menuLayout}`}>
+                    <div className={`${styles.blockActionToggle} ${styles.navMobile}`}>
+                        <input type="checkbox" className={styles.actionToggle} />
+                        <div className={styles.blockImgActionToggle}>
+                            <div className={styles.imageActionToggle}></div>
+                        </div>
+                        <nav className={`${styles.navMenu}`}>
+                            <ul className={`${styles.menuLayout}`}>
+                                <li><a href="#Accueil">Accueil</a></li>
+                                <li><a href="#Apropos">À propos</a></li>
+                                <li><a href="#Contact">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <nav className={`${styles.navDesktop}`}>
+                        <ul>
                             <li><a href="#Accueil">Accueil</a></li>
                             <li><a href="#Apropos">À propos</a></li>
                             <li><a href="#Contact">Contact</a></li>
                         </ul>
                     </nav>
+                    
                 </div>
-
-                {!user 
-                    ?
-                    <div className={`${utilStyles.btnGroup}`} role="group" aria-label="Call to action">            
-                        <Link href="/users/register">
-                            <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">SignUp</a>
-                        </Link>  
-                        {/* <span className={`${utilStyles.btnCircle} ${utilStyles.btnOr}`}>or</span> */}
-                        <Link href="/users/login">
-                            <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">SignIn</a>
+                <div className={styles.navRight}>
+                    {!user 
+                        ?
+                        <Link href="/users/profile">
+                                <a type="button" className={`${utilStyles.ButtonAhref}`} href="#"><img src="/images/person.svg"></img>Account</a>
                         </Link>
-                    </div>
-                    :
-                    <Link href="/users/profile">
-                            <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">{user.name}</a>
-                    </Link>
-                    // <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
-                    }
+                        :
+                        <Link href="/users/profile">
+                                <a type="button" className={`${utilStyles.ButtonAhref}`} href="#"><img src="/images/person.svg"></img>{user.name}</a>
+                        </Link>
+                        // <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
+                        }
+                        {/* <Link href="/users/panier">
+                                <a type="button" className={`${utilStyles.ButtonAhref}`} href="#"><img src="/images/shopping_bag.svg"></img></a>
+                        </Link> */}
+                </div>
             </div>
             <div className={styles.container}>
                 <Head>
@@ -69,6 +81,9 @@ export default function Layout({ children, home }) {
                     />
                     <meta name="og:title" content={siteTitle} />
                     <meta name="twitter:card" content="summary_large_image" />
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,800;1,100;1,400&display=swap');
+                    </style>
                 </Head>
                 <header className={styles.header}>
                     {home ? (
@@ -105,6 +120,6 @@ export default function Layout({ children, home }) {
                     </div>
                 )}
             </div>
-        </>
+        </div>
     )
 }
