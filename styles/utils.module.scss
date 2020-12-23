@@ -3,6 +3,7 @@
 // Comprendre Scss : https://sass-lang.com/documentation/style-rules
 // Gen linear-gradiant : https://cssgradient.io/
 // Gen Box-Shadow : https://html-css-js.com/css/generator/box-shadow/
+@import './mixin';
 
 .heigthMax{
   height: 100%;
@@ -68,6 +69,11 @@
   justify-content: space-between;
 }
 
+.svgWhite{
+  width:35px;
+  height: 35px;
+  filter: invert(100%);
+}
 
 .ButtonAhref {
   display:flex; 
@@ -86,11 +92,16 @@
   // border-image-source: linear-gradient(to bottom right, #6d3ea1 ,#3846cf,#34aad5  );
   // background: rgb(52,170,213);
   // background: linear-gradient(125deg, rgba(52,170,213,1) 9%, rgba(109,62,161,1) 88%);
-  background: rgb(109,62,161);
-  // background: linear-gradient(125deg, rgba(109,62,161,0.5032387955182073) 10%, rgba(56,70,207,0.43601190476190477) 50%, rgba(52,170,213,0.5) 90%);
-  background: linear-gradient(125deg, rgba(109,62,161) 10%, rgba(56,70,207) 50%, rgba(52,170,213) 90%);
-  -webkit-box-shadow: 0px 0px 10px -2px #000000; 
-  box-shadow: 0px 0px 10px -2px #000000;
+  // background: rgb(109,62,161);
+  // // background: linear-gradient(125deg, rgba(109,62,161,0.5032387955182073) 10%, rgba(56,70,207,0.43601190476190477) 50%, rgba(52,170,213,0.5) 90%);
+  // background: linear-gradient(125deg, rgba(109,62,161) 10%, rgba(56,70,207) 50%, rgba(52,170,213) 90%);
+  // -webkit-box-shadow: 0px 0px 10px -2px #000000; 
+  // box-shadow: 0px 0px 10px -2px #000000;
+  @include BgColor_Dft;
+  // background: #f3904f; /* fallback for old browsers */
+  // background: -webkit-linear-gradient(to right, #f3904f, #3b4371); /* Chrome 10-25, Safari 5.1-6 */
+  // background: linear-gradient(to right, #f3904f, #3b4371); 
+  
   
   
   &:hover{

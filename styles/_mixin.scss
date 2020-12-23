@@ -1,0 +1,20 @@
+// color Gradiant https://uigradients.com/#Dawn
+$primColor: #fceabb;
+$primColorRGBA: rgba(252, 234, 187, 0.5);
+$secondColor : #3fada8;
+$secondColorRGBA: rgba(63, 173, 168, 0.5);
+
+$mediaMaxWidth: 640px; 
+
+@mixin BgColor_Dft() {
+    background: $primColor; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right bottom, $primColor, $secondColor); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right bottom,$primColor,$secondColor);  
+}
+
+@mixin BgColorBlur_Dft() {
+    background: $primColorRGBA; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right bottom, $primColorRGBA, $secondColorRGBA); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right bottom,$primColorRGBA,$secondColorRGBA);
+    backdrop-filter: blur(5px);  
+}

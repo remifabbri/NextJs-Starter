@@ -21,11 +21,15 @@ export default function Layout({ children, home }) {
         <div className={styles.heigthMax}>  
             <div className={`${styles.navLayout}`}>
                 <div className={`${styles.navLeft}`}>
-                    <img
-                    src="/images/logo.svg"
-                    className={`${styles.navLogo} ${utilStyles.borderCircle}`}
-                    alt={name}
-                    />
+                    <div className={`${styles.navLogo}`}>
+                        {/* <div
+                            className={`${styles.bglogo}`}
+                        ></div> */}
+                        <img
+                            src="/images/logo.svg"
+                            alt={name}
+                        />
+                    </div>
                     <div className={`${styles.blockActionToggle} ${styles.navMobile}`}>
                         <input type="checkbox" className={styles.actionToggle} />
                         <div className={styles.blockImgActionToggle}>
@@ -53,16 +57,16 @@ export default function Layout({ children, home }) {
                     {!user 
                         ?
                         <Link href="/users/profile">
-                                <a type="button" className={`${utilStyles.ButtonAhref}`} href="#"><img src="/images/person.svg"></img>Account</a>
+                                <a type="button"  href="#"><img className={`${utilStyles.svgWhite}`} src="/images/person.svg"></img></a>
                         </Link>
                         :
                         <Link href="/users/profile">
-                                <a type="button" className={`${utilStyles.ButtonAhref}`} href="#"><img src="/images/person.svg"></img>{user.name}</a>
+                                <a type="button"  href="#"><img className={`${utilStyles.svgWhite}`} src="/images/person.svg"></img></a>
                         </Link>
                         // <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
                         }
                         {/* <Link href="/users/panier">
-                                <a type="button" className={`${utilStyles.ButtonAhref}`} href="#"><img src="/images/shopping_bag.svg"></img></a>
+                                <a type="button" href="#"><img className={`${utilStyles.svgWhite}`} src="/images/shopping_bag.svg"></img></a>
                         </Link> */}
                 </div>
             </div>
