@@ -22,9 +22,6 @@ export default function Layout({ children, home }) {
             <div className={`${styles.navLayout}`}>
                 <div className={`${styles.navLeft}`}>
                     <div className={`${styles.navLogo}`}>
-                        {/* <div
-                            className={`${styles.bglogo}`}
-                        ></div> */}
                         <img
                             src="/images/logo.svg"
                             alt={name}

@@ -87,36 +87,13 @@
             transform: translateX(-50%);
             height: 50px;
             order: 1;
-            // width:100px;
-            // height: 60px;
-            // background: url(../public/images/bgLogo.svg); 
-            // background-repeat: no-repeat;
-            // background-size:cover;
             
-            // &:before{
-            //     content:'';
-            //     position: absolute; 
-            //     left: -25px;
-            //     height:25px; 
-            //     width: 25px;
-            //     background-color:red; 
-            //     border-bottom-left-radius:2500%;
-        
-                
+            // &:before{        
             // }
             // &:after{
-            //     content:'';
-            //     position: absolute; 
-            //     right: -25px;
-            //     height:25px; 
-            //     width: 25px;
-            //     background-color:red;
-            //     border-bottom-right-radius:100%; 
             // }
 
-            .bglogo{
-            
-            }
+
             @media(max-width: $mediaMaxWidth){
                 order: 2; 
                 background-color: white;
