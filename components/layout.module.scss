@@ -36,8 +36,6 @@
     align-items: center;
     height: 50px;
     width: 100%;
-    // background-color: #f2e7bf;
-
 
     .navRight{
         display: flex; 
@@ -77,7 +75,6 @@
             padding :0px;
         }
 
-
         .navLogo{
             position: absolute; 
             top: 0; 
@@ -93,7 +90,6 @@
             // &:after{
             // }
 
-
             @media(max-width: $mediaMaxWidth){
                 order: 2; 
                 background-color: white;
@@ -102,8 +98,6 @@
                 -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3); 
                 box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3);
             }
-
-
         }
 
         .blockActionToggle{
@@ -231,10 +225,7 @@
                 }
             } 
         }
-    }
-
-
-    
+    }    
 }
 
 .navMobile{

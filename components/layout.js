@@ -22,10 +22,14 @@ export default function Layout({ children, home }) {
             <div className={`${styles.navLayout}`}>
                 <div className={`${styles.navLeft}`}>
                     <div className={`${styles.navLogo}`}>
-                        <img
-                            src="/images/logo.svg"
-                            alt={name}
-                        />
+                        <Link href="/">
+                            <a>
+                                <img
+                                    src="/images/logo.svg"
+                                    alt={name}
+                                />
+                            </a>
+                        </Link>
                     </div>
                     <div className={`${styles.blockActionToggle} ${styles.navMobile}`}>
                         <input type="checkbox" className={styles.actionToggle} />

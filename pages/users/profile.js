@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useAuth } from '../../hooks/useAuth'
 import utilStyles from '../../styles/utils.module.scss'
+import Layout from '../../components/layout';
+import NeedLog from '../../components/needLog'
 
 const profile = () => {
     const auth = useAuth();
@@ -24,69 +26,23 @@ const profile = () => {
         })
     }
 
-  if(!user){
+
     return (
-      <div>
-        <h1>Profile</h1>
+      <Layout home>
+        <h1> Votre Profile</h1>
         
-        <div className={`${utilStyles.btnGroup}`} role="group" aria-label="Call to action">            
-            <Link href="/users/register">
-                <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">SignUp</a>
-            </Link>  
-            {/* <span className={`${utilStyles.btnCircle} ${utilStyles.btnOr}`}>or</span> */}
-            <Link href="/users/login">
-                <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">SignIn</a>
-            </Link>
-        </div>
-
-        <h2>Option de gestion</h2>
-        <Link href="/users/resetpassword">
-          <a>Changé le mot de passe de son compte</a>
-        </Link>
-
-        <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
-        {/* {notify}
-        <form onSubmit={handleLogin}>
-          Email<input type="text" value={email} 
-          onChange= {({target}) => setEmail(target.value)} />
-          <br />
-          Password<input type="password" value={password} 
-          onChange={({target}) => setPassword(target.value)} />
-          <br />
-          <button type="submit">Login</button>
-        </form> */}
-      </div>
+        {!user
+          ? <NeedLog/>
+          :  <>
+              <h2>Option de gestion</h2>
+              <Link href="/users/resetpassword">
+                <a>Changé le mot de passe de son compte</a>
+              </Link>
+              <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
+            </>
+        }
+      </Layout>
     )
-  }
-
-  return (
-    <div>
-      <h1>Profile</h1>
-      
-      <h2>Information du profile</h2>
-      <p>Nom / Pseudo</p>
-      <p>{user.name}</p>
-      <p>Email</p>
-      <p>{user.email}</p>
-
-      <h2>Option de gestion</h2>
-      <Link href="/users/resetpassword">
-        <a>Changé le mot de passe de son compte</a>
-      </Link>
-
-      <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
-      {/* {notify}
-      <form onSubmit={handleLogin}>
-        Email<input type="text" value={email} 
-        onChange= {({target}) => setEmail(target.value)} />
-        <br />
-        Password<input type="password" value={password} 
-        onChange={({target}) => setPassword(target.value)} />
-        <br />
-        <button type="submit">Login</button>
-      </form> */}
-    </div>
-  )
 }
 
 export default profile
