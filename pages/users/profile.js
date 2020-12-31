@@ -28,7 +28,7 @@ const profile = () => {
 
 
     return (
-      <Layout home>
+      <Layout>
         <h1> Votre Profile</h1>
         
         {!user

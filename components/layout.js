@@ -90,38 +90,14 @@ export default function Layout({ children, home }) {
                         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,800;1,100;1,400&display=swap');
                     </style>
                 </Head>
-                <header className={styles.header}>
-                    {home ? (
-                    <>
-                        
-                    </>
-                    ) : (
-                    <>
-                        <Link href="/">
-                        <a>
-                            <img
-                            src="/images/profile.jpg"
-                            className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                            alt={name}
-                            />
-                        </a>
-                        </Link>
-                        <h2 className={utilStyles.headingLg}>
-                        <Link href="/">
-                            <a className={utilStyles.colorInherit}>{name}</a>
-                        </Link>
-                        </h2>
-                    </>
-                    )}
-                </header>
-
+                
                 <main>{children}</main>
 
                 {!home && (
                     <div className={styles.backToHome}>
-                    <Link href="/">
-                        <a>← Back to home</a>
-                    </Link>
+                        <Link href="/">
+                            <a>← Back to home</a>
+                        </Link>
                     </div>
                 )}
             </div>

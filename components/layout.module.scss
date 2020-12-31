@@ -23,7 +23,22 @@
 }
 
 .backToHome {
-    margin: 3rem 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display:flex; 
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width:100px;
+    background-color: $blackSatComp;
+    border-top-right-radius:50px;
+    border-bottom-right-radius:50px;
+
+    a{
+        font-size: 10px;
+    }
 }
 
 .navLayout {
