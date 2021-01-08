@@ -34,6 +34,10 @@ const profile = () => {
         {!user
           ? <NeedLog/>
           :  <>
+              <h3>Nom</h3>
+              <p>{user.name}</p>
+              <h3>Email</h3>
+              <p>{user.email}</p>
               <h2>Option de gestion</h2>
               <Link href="/users/resetpassword">
                 <a>Changé le mot de passe de son compte</a>
